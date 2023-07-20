@@ -70,6 +70,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_calendarDatePick__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_calendarDatePick__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_scrollTop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/scrollTop */ "./src/js/components/scrollTop.js");
 /* harmony import */ var _components_scrollTop__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_scrollTop__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_changeActiveClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/changeActiveClass */ "./src/js/components/changeActiveClass.js");
+/* harmony import */ var _components_changeActiveClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_changeActiveClass__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 
@@ -182,12 +185,16 @@ const swiperHero = new swiper__WEBPACK_IMPORTED_MODULE_8__["default"]('.hero-swi
   },
   slidesPerView: 1,
   breakpoints: {
-    // when window width is >= 1024px
-    1023: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 2
+    },
+    768: {
       slidesPerView: 2,
       spaceBetween: 2
     },
-    1439: {
+    // when window width is >= 1024px
+    1023: {
       slidesPerView: 3,
       spaceBetween: 2
     }
@@ -195,7 +202,6 @@ const swiperHero = new swiper__WEBPACK_IMPORTED_MODULE_8__["default"]('.hero-swi
 });
 const swiperAlboms = new swiper__WEBPACK_IMPORTED_MODULE_8__["default"]('.main-alboms-swiper', {
   loop: true,
-  spaceBetween: 15,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev'
@@ -209,11 +215,11 @@ const swiperAlboms = new swiper__WEBPACK_IMPORTED_MODULE_8__["default"]('.main-a
     },
     768: {
       slidesPerView: 2,
-      spaceBetween: 2
+      spaceBetween: 3
     },
     1439: {
       slidesPerView: 3,
-      spaceBetween: 2
+      spaceBetween: 10
     }
   }
 });
@@ -296,6 +302,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // (function () { document.getElementById('davaToday').valueAsDate = new Date() })();;
+
+/***/ }),
+
+/***/ "./src/js/components/changeActiveClass.js":
+/*!************************************************!*\
+  !*** ./src/js/components/changeActiveClass.js ***!
+  \************************************************/
+/***/ (() => {
+
+Array.from(document.querySelectorAll('.header__nav ul li a')).map(linkElem => {
+  if (window.location.href.includes(linkElem.href)) {
+    linkElem.closest('li').classList.add('open');
+    linkElem.classList.add('active');
+  }
+});
+Array.from(document.querySelectorAll('.footer__nav ul li a')).map(linkElem => {
+  if (window.location.href.includes(linkElem.href)) {
+    linkElem.closest('li').classList.add('open');
+    linkElem.classList.add('active');
+  }
+});
 
 /***/ }),
 
