@@ -4499,4 +4499,50 @@ a {
 .image-wrapper {
   position: relative;
 }
+
+.files__title {
+  text-transform: uppercase;
+  padding-top: 4px;
+  padding-bottom: 9px;
+  font-weight: 400;
+  font-size: 32px;
+}
+.files__list {
+  position: relative;
+  counter-reset: mycounter;
+}
+.files__arrow {
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  font-size: 40px;
+}
+.files__arrow::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  counter-increment: mycounter;
+  content: counter(mycounter);
+}
+.files__item {
+  position: relative;
+  padding-left: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--text-grey);
+}
+.files__link {
+  color: var(--text);
+}
+.files__text {
+  margin: 0;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 400;
+  text-align: left;
+  color: var(--text);
+}
 /*# sourceMappingURL=main.css.map */
