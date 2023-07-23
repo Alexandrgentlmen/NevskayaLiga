@@ -159,7 +159,16 @@ new (simple_parallax_js__WEBPACK_IMPORTED_MODULE_3___default())(image, {
 
 // Реализация табов
 
-const tabs = new graph_tabs__WEBPACK_IMPORTED_MODULE_7__["default"]('tab1');
+const onIndexPage = window.location.href.includes('index');
+const onHallPage = window.location.href.includes('halloffame');
+// index.html страница :
+if (onIndexPage) {
+  const tabs1 = new graph_tabs__WEBPACK_IMPORTED_MODULE_7__["default"]('tab1');
+}
+// halloffame.html страница :
+if (onHallPage) {
+  const tabs2 = new graph_tabs__WEBPACK_IMPORTED_MODULE_7__["default"]('tab2');
+}
 
 // Получение высоты шапки сайта (не забудьте вызвать функцию)
 // import { getHeaderHeight } from './functions/header-height';
@@ -323,6 +332,42 @@ Array.from(document.querySelectorAll('.footer__nav ul li a')).map(linkElem => {
     linkElem.classList.add('active');
   }
 });
+
+// табы для вторых табов
+
+document.addEventListener('DOMContentLoaded', () => {
+  const tabBtns = document.querySelectorAll('.tubs__nav-btn');
+  const tabs = document.querySelectorAll('.tubs__panel');
+  tabBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(btn => btn.classList.remove('active'));
+      tabs.forEach(tab => tab.classList.remove('active'));
+      btn.classList.add('active');
+      tabs[index].classList.add('active');
+    });
+  });
+});
+
+// tubs panel add active class
+// проверим на какой странице мы находимся
+const onLocationPage = window.location.href.includes('ïndex');
+const onHallPage = window.location.href.includes('halloffame');
+var btnContainer = document.querySelector('[data-tabs="years"]');
+
+// Get all buttons with class="btn" inside the container
+
+if (onHallPage) {
+  var btns = btnContainer.getElementsByClassName("tabs__nav_years-item");
+
+  // Loop through the buttons and add the active class to the current/clicked button
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      var current = document.getElementsByClassName("focused");
+      current[0].className = current[0].className.replace(" focused", "");
+      this.className += " focused";
+    });
+  }
+}
 
 /***/ }),
 
@@ -906,7 +951,6 @@ class GraphTabs {
       console.error('Селектор data-tabs не существует!');
       return;
     }
-
     this.check();
     this.init();
     this.events();
@@ -941,10 +985,10 @@ class GraphTabs {
       el.classList.remove('tabs__panel--active');
     });
 
-    this.tabsBtns[0].classList.add('tabs__nav-btn--active');
-    this.tabsBtns[0].removeAttribute('tabindex');
-    this.tabsBtns[0].setAttribute('aria-selected', 'true');
-    this.tabsPanels[0].classList.add('tabs__panel--active');
+    this.tabsBtns[1].classList.add('tabs__nav-btn--active');
+    this.tabsBtns[1].removeAttribute('tabindex');
+    this.tabsBtns[1].setAttribute('aria-selected', 'true');
+    this.tabsPanels[1].classList.add('tabs__panel--active');
   }
 
   events() {
@@ -1003,6 +1047,7 @@ class GraphTabs {
     this.options.isChanged(this);
   }
 }
+
 
 /***/ }),
 
